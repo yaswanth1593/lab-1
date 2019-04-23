@@ -1,10 +1,12 @@
 import numpy as np
 import matplotlib. pyplot as plt
 import cmath as cm
+
+
 wp=0.35*np.pi
 ws=0.7*np.pi
-ds=0.1
-dp=0.6
+ds=0.6
+dp=0.1
 T=0.1
 
 def analog(wp,ws):
@@ -54,6 +56,7 @@ def tf(Ac,n2,T):
       j=cm.sqrt(-1)
       bk=2*np.sin((((2*k)-1)*np.pi)/(2*n2))
       w=np.arange(0,np.pi,0.1)
+	
       z=np.exp(j*w)
       s=(2/T)*((1-z**(-1))/(1+z**(-1)))
       y=((Ac)**n2)/((s**2)+(bk*Ac*s)+(Ac**2))
@@ -61,10 +64,7 @@ def tf(Ac,n2,T):
 
 hs=tf(Ac,n2,T)
 w=np.arange(0,np.pi,0.1)
-plt.xlabel('frequency')
-plt.ylabel('magnitude|H(e**(jw)|')
-plt.title('Low pass filter')
-plt.plot(w,np.abs(hs))
+plt.plot(w,hs)
 plt.show()
        
 
